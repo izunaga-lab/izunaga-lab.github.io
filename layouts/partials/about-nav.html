@@ -1,0 +1,11 @@
+{{ $current := . }}
+{{ with site.GetPage "/about" }}
+<nav class="subnav" aria-label="研究室紹介のページ">
+  <ul>
+    <li><a href="{{ .RelPermalink }}"{{ if eq $current.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>概要</a></li>
+    {{ range .Pages.ByWeight }}
+      <li><a href="{{ .RelPermalink }}"{{ if eq $current.RelPermalink .RelPermalink }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</nav>
+{{ end }}

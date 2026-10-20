@@ -1,0 +1,54 @@
+{{ define "main" }}
+{{ $m := hugo.Data.members }}
+<div class="container narrow">
+  {{ partial "page-header.html" . }}
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+  <section class="member-section" aria-labelledby="faculty">
+    <h2 id="faculty" class="section-title">教員</h2>
+    {{ range $m.faculty }}
+      <article class="faculty">
+        <h3 class="faculty-name">{{ .name }}<span class="faculty-position">{{ .position }}</span></h3>
+        {{ with .name_en }}<p class="faculty-en" lang="en">{{ . }}</p>{{ end }}
+        <dl class="faculty-meta">
+          {{ with .research }}<dt>専門</dt><dd>{{ . }}</dd>{{ end }}
+          {{ with .email }}<dt>メール</dt><dd>{{ . }}</dd>{{ end }}
+          {{ with .links }}
+            <dt>リンク</dt>
+            <dd>{{ range $i, $l := . }}{{ if $i }}，{{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end }}</dd>
+          {{ end }}
+        </dl>
+      </article>
+    {{ end }}
+  </section>
+
+  {{ range $i, $g := $m.students }}
+    <section class="member-section" aria-labelledby="students-{{ $i }}">
+      <h2 id="students-{{ $i }}" class="section-title">{{ $g.group }}<span class="count">{{ len $g.members }}名</span></h2>
+      <div class="table-wrap">
+        <table class="member-table">
+          <thead><tr><th scope="col">学年</th><th scope="col">氏名</th><th scope="col">研究テーマ</th></tr></thead>
+          <tbody>
+            {{ range $g.members }}
+              <tr><td>{{ .grade }}</td><td class="nowrap">{{ .name }}</td><td>{{ .theme }}</td></tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  {{ end }}
+
+  {{ with $m.alumni }}
+    <section class="member-section" aria-labelledby="alumni">
+      <h2 id="alumni" class="section-title">卒業生・修了生</h2>
+      {{ range . }}
+        <details class="alumni">
+          <summary>{{ .year }}<span class="count">{{ len .members }}名</span></summary>
+          <ul>{{ range .members }}<li>{{ . }}</li>{{ end }}</ul>
+        </details>
+      {{ end }}
+      <p class="note">進路は<a href="{{ (site.GetPage "/about/careers").RelPermalink }}">進路状況</a>をご覧ください．</p>
+    </section>
+  {{ end }}
+</div>
+{{ end }}

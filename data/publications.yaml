@@ -1,0 +1,91 @@
+# ---------------------------------------------------------------
+#  研究成果
+#  items に1件ずつ追加します．並び順は自動で年の新しい順になります
+#  type は categories の key のどれかを指定してください
+# ---------------------------------------------------------------
+
+categories:
+  - key: preprint
+    label: プレプリント
+  - key: journal
+    label: 学術論文
+  - key: international
+    label: 国際会議
+  - key: domestic
+    label: 国内学会・研究会
+  - key: award
+    label: 受賞
+
+
+items:
+  - type: preprint
+    year: 2026
+    authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
+    title: A unifying view of distributionally robust optimization for probability smoothing via maximum entropy
+    venue: arXix
+    detail: arXiv:2610.02568
+    
+  - type: preprint
+    year: 2025
+    authors: [K. Kurihara, Y. Izunaga]
+    title: A scalable mixed-integer conic optimization approach to cardinality-constrained Poisson regression with safe screening.
+    venue: arXix
+    detail: arXiv:2504.12819
+    
+  - type: journal
+    year: 2026
+    authors: [Y. Izunaga, K. Kurihara, H. Hokuto, D. Uchida]
+    title: An axiomatic analysis of distributionally robust optimization with q-norm ambiguity sets for probability smoothing
+    venue: Operations Research Letters
+    detail: Vol. 67, 107457
+    doi: 10.1016/j.orl.2026.107457
+
+  - type: international
+    year: 2026
+    authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
+    title: An Axiomatic Analysis of Distributionally Robust Optimization with q-Norm Ambiguity Sets for Probability Smoothing
+    venue: The 24th Conference of The International Federation of Operational Research Societies (IFORS) 
+    detail: Vienna
+
+  - type: domestic
+    year: 2026
+    authors: [川根大輝，長野北斗，伊豆永洋一]
+    title: 逆最適化アプローチによる議席配分の公平性評価
+    venue: 日本オペレーションズ・リサーチ学会 2026年秋季研究発表会
+    detail: 2026-09-11@京都大学
+    note: 優秀学生発表賞
+
+  - type: domestic
+    year: 2026
+    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    title: Wasserstein 距離を用いた分布的ロバスト確率平滑化とエントロピー最大化との関係
+    venue: 数理最適化：理論，計算，社会実装の新たな展開 RIMS共同研究（公開型） 
+    detail: 2026-09-3@京都大学 数理解析研究所
+
+  - type: domestic
+    year: 2026
+    authors: [川根大輝，長野北斗，伊豆永洋一]
+    title: 逆最適化アプローチによる議席配分の公平性評価
+    venue: 数理最適化：理論，計算，社会実装の新たな展開 RIMS共同研究（公開型） 
+    detail: 2026-09-3@京都大学 数理解析研究所
+
+  - type: domestic
+    year: 2026
+    authors: [川根大輝，長野北斗，伊豆永洋一]
+    title: 逆最適化アプローチによる議席配分の公平性評価
+    venue: 日本オペレーションズ・リサーチ学会「評価のOR」研究部会 学生発表会2026 
+    detail: 2026-06-29@早稲田大学
+
+  - type: award
+    year: 2026
+    authors: [栗原 昂汰]
+    title: 第44回 学生論文賞
+    venue: 日本オペレーションズ・リサーチ学会
+    
+  - type: award
+    year: 2026
+    authors: [川根 大輝]
+    title: 優秀学生発表賞
+    venue: 日本オペレーションズ・リサーチ学会 2026年秋季研究発表会
+
+

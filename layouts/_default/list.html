@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="container narrow">
+  {{ partial "page-header.html" . }}
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  {{ $paginator := .Paginate .Pages.ByDate.Reverse }}
+  <ul class="news-list">
+    {{ range $paginator.Pages }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+  </ul>
+  {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pager" aria-label="ページ送り">
+      {{ with $paginator.Prev }}<a href="{{ .URL }}">新しいお知らせ</a>{{ end }}
+      <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      {{ with $paginator.Next }}<a href="{{ .URL }}">過去のお知らせ</a>{{ end }}
+    </nav>
+  {{ end }}
+</div>
+{{ end }}

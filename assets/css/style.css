@@ -1,0 +1,482 @@
+/* ===============================================================
+   〇〇研究室 サイトスタイル
+   色は :root の変数で管理しています（ダークモード対応）
+   =============================================================== */
+
+:root {
+  --bg: #ffffff;
+  --surface: #f3f5f8;
+  --text: #1b2330;
+  --muted: #5a6472;
+  --line: #d9dee5;
+  --accent: #1f4e79;       /* 藍色 */
+  --accent-soft: #e6eef6;
+
+  --font-body: "BIZ UDPGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  --font-head: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+
+  --wide: 68rem;
+  --narrow: 46rem;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12161c;
+    --surface: #1a2029;
+    --text: #e5e9ee;
+    --muted: #9ba5b3;
+    --line: #2d3541;
+    --accent: #8fb8e2;
+    --accent-soft: #1c2a39;
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+
+img { max-width: 100%; height: auto; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  z-index: 10;
+}
+.skip-link:focus { top: 1rem; }
+
+.container {
+  width: min(100% - 2.5rem, var(--wide));
+  margin-inline: auto;
+}
+.container.narrow { width: min(100% - 2.5rem, var(--narrow)); }
+
+.nowrap { white-space: nowrap; }
+
+/* ---------- ヘッダー ---------- */
+
+.site-header { border-bottom: 1px solid var(--line); }
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1rem;
+}
+
+.site-brand {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding-block: 0.25rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover { color: var(--text); }
+.site-nav a.is-current {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- トップページ ---------- */
+
+.hero {
+  padding-block: clamp(3rem, 9vw, 6rem) clamp(2.5rem, 6vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-affiliation {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 4.25rem);
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+}
+
+.hero-title-en {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.hero-lead {
+  max-width: 40rem;
+  margin-top: 2.25rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--accent);
+  font-size: 1.05rem;
+}
+.hero-lead p { margin: 0 0 0.75rem; }
+.hero-lead p:last-child { margin-bottom: 0; }
+
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 3rem 4.5rem;
+  padding-block: 3.5rem 5rem;
+}
+
+@media (max-width: 52rem) {
+  .home-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+.count {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.news-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.news-list li {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+.news-list time {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 30rem) {
+  .news-list li { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+}
+
+.more-link { margin: 1rem 0 0; }
+
+.guide-list { margin: 0; }
+.guide-list dt {
+  font-weight: 700;
+  margin-top: 1.1rem;
+}
+.guide-list dt:first-child { margin-top: 0; }
+.guide-list dd {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- 下層ページ共通 ---------- */
+
+.page-header { padding-block: 3rem 1.5rem; }
+
+.page-header h1 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4.5vw, 2.5rem);
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+}
+
+.page-lead {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.breadcrumb {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.subnav { margin-bottom: 2.5rem; border-bottom: 1px solid var(--line); }
+.subnav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.subnav a {
+  display: inline-block;
+  padding-block: 0.6rem;
+  margin-bottom: -1px;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.subnav a:hover { color: var(--text); }
+.subnav a[aria-current="page"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.about-index { margin-top: 2.5rem; }
+
+main > .container { padding-bottom: 5rem; }
+
+/* 本文（Markdown） */
+.prose h2 {
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+.prose h2:first-child { margin-top: 0; }
+.prose h3 { margin: 2rem 0 0.75rem; font-size: 1.1rem; }
+.prose p { margin: 0 0 1.1rem; }
+.prose ul, .prose ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
+.prose li + li { margin-top: 0.3rem; }
+
+.prose > table { margin-bottom: 1.5rem; }
+@media (max-width: 40rem) {
+  .prose > table { display: block; overflow-x: auto; }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+th, td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  background: var(--surface);
+  font-weight: 700;
+  white-space: nowrap;
+}
+td ul { margin: 0; padding-left: 1.1rem; }
+
+.table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+
+.post-date { margin: -0.75rem 0 1.5rem; color: var(--muted); }
+.back-link { margin-top: 3rem; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  color: var(--muted);
+}
+
+/* ---------- メンバー ---------- */
+
+.member-section { margin-top: 2.75rem; }
+.member-section:first-of-type { margin-top: 0; }
+
+.faculty { padding-block: 1.25rem; border-bottom: 1px solid var(--line); }
+.faculty:last-child { border-bottom: 0; }
+
+.faculty-name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+}
+.faculty-position {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.faculty-en { margin: 0.1rem 0 0.75rem; color: var(--muted); font-size: 0.9rem; }
+
+.faculty-meta {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0.3rem 1rem;
+  margin: 0;
+  font-size: 0.95rem;
+}
+.faculty-meta dt { color: var(--muted); }
+.faculty-meta dd { margin: 0; }
+
+.member-table { table-layout: fixed; }
+.member-table th:nth-child(1) { width: 4.5rem; }
+.member-table th:nth-child(2) { width: 9rem; }
+@media (max-width: 30rem) {
+  .member-table th, .member-table td { padding-inline: 0.5rem; }
+  .member-table th:nth-child(1) { width: 3.25rem; }
+  .member-table th:nth-child(2) { width: 6.5rem; }
+}
+.member-table td:first-child { color: var(--muted); }
+
+.alumni { border-bottom: 1px solid var(--line); }
+.alumni summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+.alumni summary::-webkit-details-marker { display: none; }
+.alumni summary::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: translateY(-0.15rem) rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+.alumni[open] summary::before { transform: translateY(-0.25rem) rotate(45deg); }
+@media (prefers-reduced-motion: reduce) {
+  .alumni summary::before { transition: none; }
+}
+.alumni ul { margin: 0 0 1rem; padding-left: 1.4rem; }
+
+.note { margin-top: 1rem; color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- 研究成果 ---------- */
+
+.pub-index { margin-bottom: 2.5rem; }
+.pub-index ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pub-index a { display: inline-flex; align-items: baseline; gap: 0.4rem; text-decoration: none; }
+.pub-index a span:first-child { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+.pub-index a:hover span:first-child { text-decoration-thickness: 2px; }
+
+.pub-section { margin-top: 3rem; scroll-margin-top: 1.5rem; }
+.pub-section:first-of-type { margin-top: 0; }
+
+.pub-year {
+  margin: 1.75rem 0 0.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pub-list { margin: 0; padding: 0; list-style: none; }
+
+.pub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.65;
+}
+.pub-title { font-weight: 700; }
+.pub-venue, .pub-extra { color: var(--muted); font-size: 0.92rem; }
+.pub-extra { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; align-items: baseline; margin-top: 0.2rem; }
+.pub-note {
+  padding: 0 0.5rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---------- フッター ---------- */
+
+.site-footer {
+  background: var(--surface);
+  padding-block: 2.5rem 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem 3rem;
+}
+.site-footer p { margin: 0; }
+.footer-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  letter-spacing: 0.08em;
+}
+.copyright { margin-top: 2rem !important; font-size: 0.8rem; }

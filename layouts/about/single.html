@@ -1,0 +1,7 @@
+{{ define "main" }}
+<div class="container narrow">
+  {{ partial "page-header.html" . }}
+  {{ partial "about-nav.html" . }}
+  <div class="prose">{{ .Content }}</div>
+</div>
+{{ end }}

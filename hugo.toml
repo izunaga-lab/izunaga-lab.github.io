@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------
+#  サイト全体の設定
+#  公開時の baseURL は GitHub Actions が自動で上書きします
+# ---------------------------------------------------------------
+baseURL = "https://example.github.io/"
+locale = "ja"
+defaultContentLanguage = "ja"
+title = "伊豆永研究室"
+hasCJKLanguage = true
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+  pagerSize = 10
+
+# 研究室の基本情報（ヘッダー・トップページ・フッターに表示）
+[params]
+  labName = "伊豆永研究室"
+  labNameEn = "Izunaga Laboratory"
+  affiliation = "九州大学 経済学府 経済工学専攻"
+  description = "九州大学 伊豆永研究室のウェブサイトです．"
+  address = "〒819-0395 福岡県福岡市西区元岡744"
+  email = "lab [at] example.ac.jp"
+
+# メインメニュー（weight の小さい順に並びます）
+[[menus.main]]
+  name = "ホーム"
+  pageRef = "/"
+  weight = 10
+[[menus.main]]
+  name = "研究室紹介"
+  pageRef = "/about"
+  weight = 20
+[[menus.main]]
+  name = "メンバー"
+  pageRef = "/members"
+  weight = 30
+[[menus.main]]
+  name = "研究成果"
+  pageRef = "/publications"
+  weight = 40
+
+# 日本語の改行で余計な空白が入らないようにする
+[markup.goldmark.extensions.cjk]
+  enable = true
+  eastAsianLineBreaks = true
+  eastAsianLineBreaksStyle = "css3draft"

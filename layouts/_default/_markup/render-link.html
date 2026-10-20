@@ -1,0 +1,7 @@
+{{- /* サイト内リンク（/ で始まるもの）を，サブパス公開でも壊れないよう変換します */ -}}
+{{- $href := .Destination -}}
+{{- if hasPrefix $href "/" -}}
+  {{- $href = strings.TrimPrefix "/" $href | relURL -}}
+{{- end -}}
+<a href="{{ $href | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /**/ -}}

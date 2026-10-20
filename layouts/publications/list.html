@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{ $data := hugo.Data.publications }}
+<div class="container narrow">
+  {{ partial "page-header.html" . }}
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+  <nav class="pub-index" aria-label="成果の種類">
+    <ul>
+      {{ range $data.categories }}
+        {{ $n := len (where $data.items "type" .key) }}
+        {{ if $n }}<li><a href="#{{ .key }}"><span>{{ .label }}</span><span class="count">{{ $n }}件</span></a></li>{{ end }}
+      {{ end }}
+    </ul>
+  </nav>
+
+  {{ range $data.categories }}
+    {{ $items := where $data.items "type" .key }}
+    {{ if $items }}
+      <section class="pub-section" id="{{ .key }}" aria-labelledby="{{ .key }}-title">
+        <h2 id="{{ .key }}-title" class="section-title">{{ .label }}</h2>
+        {{ $years := slice }}
+        {{ range $items }}{{ $years = $years | append .year }}{{ end }}
+        {{ range sort (uniq $years) "value" "desc" }}
+          {{ $year := . }}
+          <h3 class="pub-year">{{ $year }}年</h3>
+          <ul class="pub-list">
+            {{ range where $items "year" $year }}
+              <li class="pub">
+                <span class="pub-title">{{ .title }}</span>
+                <span class="pub-authors">{{ delimit .authors ", " }}</span>
+                <span class="pub-venue">{{ .venue }}{{ with .detail }}, {{ . }}{{ end }}</span>
+                {{ if or .doi .url .note }}
+                  <span class="pub-extra">
+                    {{ with .note }}<span class="pub-note">{{ . }}</span>{{ end }}
+                    {{ with .doi }}<a href="https://doi.org/{{ . }}">DOI: {{ . }}</a>{{ end }}
+                    {{ with .url }}<a href="{{ . }}">リンク</a>{{ end }}
+                  </span>
+                {{ end }}
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </section>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

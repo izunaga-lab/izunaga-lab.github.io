@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------
+#  メンバー一覧
+#  年度が変わったら，学年の更新と卒業生の移動をしてください
+# ---------------------------------------------------------------
+
+faculty:
+  - name: 伊豆永 洋一
+    name_en: Yoichi Izunaga
+    position: 准教授
+    research: 数理最適化，オペレーションズ・リサーチ
+    email: izunaga [at] econ.kyushu-u.ac.jp
+    links:
+      - label: researchmap
+        url: https://researchmap.jp/7000024896/
+
+students:
+  - group: 博士後期課程
+    members:
+      - { grade: D1, name: 栗原 昂汰, theme: tba }
+  - group: 修士課程
+    members:
+      - { grade: M2, name: 内田 大貴, theme: tba }
+      - { grade: M2, name: 長野 北斗, theme: tba }
+      - { grade: M1, name: 川根 大輝, theme: tba }
+      - { grade: M1, name: 牧 汰樹, theme: tba }
+  - group: 学部
+    members:
+      - { grade: B4, name: 小野 仁子, theme: tba }
+      - { grade: B4, name: 朱 彦儒, theme: tba }
+      - { grade: B4, name: 豊田 陽之, theme: tba }
+      - { grade: B3, name: 田中 陽, theme: tba }
+      - { grade: B3, name: 手嶋 和輝, theme: tba }
+      - { grade: B3, name: 平川 直幹, theme: tba }
+      - { grade: B3, name: 八十 圭佑, theme: tba }
+
+# 卒業生・修了生（年度ごと）
+alumni:
+  - year: 2025年度
+    members:
+      - 麻生 大智（学部）
+      - 坂本 彩菜（学部）
+  - year: 2024年度
+    members:
+      - 三上 和輝（学部）
+      - 森 正晴（学部）
+  - year: 2023年度
+    members:
+      - 木之本 泉希（学部）
+      - 高江 玲臣（学部）
+      - 寺島 優介（学部）
+      

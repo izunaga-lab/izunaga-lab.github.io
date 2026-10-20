@@ -1,0 +1,16 @@
+<div class="table-wrap">
+  <table class="careers-table">
+    <thead>
+      <tr><th scope="col">年度</th><th scope="col">修士課程修了</th><th scope="col">学部卒業</th></tr>
+    </thead>
+    <tbody>
+      {{ range hugo.Data.careers }}
+        <tr>
+          <th scope="row" class="nowrap">{{ .year }}</th>
+          <td>{{ with .master }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ else }}―{{ end }}</td>
+          <td>{{ with .bachelor }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ else }}―{{ end }}</td>
+        </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</div>

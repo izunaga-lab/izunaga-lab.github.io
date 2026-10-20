@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="container narrow">
+  {{ partial "page-header.html" . }}
+  {{ partial "about-nav.html" . }}
+  <div class="prose">{{ .Content }}</div>
+  <dl class="guide-list about-index">
+    {{ range .Pages.ByWeight }}
+      <dt><a href="{{ .RelPermalink }}">{{ .Title }}</a></dt>
+      <dd>{{ .Description }}</dd>
+    {{ end }}
+  </dl>
+</div>
+{{ end }}

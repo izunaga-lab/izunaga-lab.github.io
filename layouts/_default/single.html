@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="container narrow">
+  {{ partial "page-header.html" . }}
+  {{ if eq .Section "news" }}
+    <p class="post-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></p>
+  {{ end }}
+  <div class="prose">
+    {{ .Content }}
+  </div>
+  {{ if eq .Section "news" }}
+    <p class="back-link"><a href="{{ (site.GetPage "/news").RelPermalink }}">お知らせ一覧に戻る</a></p>
+  {{ end }}
+</div>
+{{ end }}

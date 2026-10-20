@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <p class="hero-affiliation">{{ site.Params.affiliation }}</p>
+    <h1 class="hero-title">{{ site.Params.labName }}</h1>
+    <p class="hero-title-en" lang="en">{{ site.Params.labNameEn }}</p>
+    <div class="hero-lead">{{ .Content }}</div>
+  </div>
+</section>
+
+<div class="container home-grid">
+  <section aria-labelledby="home-news">
+    <h2 id="home-news" class="section-title">お知らせ</h2>
+    <ul class="news-list">
+      {{ range first 5 (where site.RegularPages "Section" "news").ByDate.Reverse }}
+        <li>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+      {{ end }}
+    </ul>
+    <p class="more-link"><a href="{{ (site.GetPage "/news").RelPermalink }}">お知らせをすべて見る</a></p>
+  </section>
+
+  <section aria-labelledby="home-guide">
+    <h2 id="home-guide" class="section-title">研究室を知る</h2>
+    <dl class="guide-list">
+      {{ range slice "/about/research" "/about/careers" "/about/seminar" "/members" "/publications" }}
+        {{ with site.GetPage . }}
+          <dt><a href="{{ .RelPermalink }}">{{ .Title }}</a></dt>
+          <dd>{{ .Description }}</dd>
+        {{ end }}
+      {{ end }}
+    </dl>
+  </section>
+</div>
+{{ end }}
