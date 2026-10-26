@@ -18,6 +18,7 @@ categories:
 
 
 items:
+  # ---- プレプリント ----
   - type: preprint
     year: 2026
     authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
@@ -31,7 +32,8 @@ items:
     title: A scalable mixed-integer conic optimization approach to cardinality-constrained Poisson regression with safe screening.
     venue: arXix
     detail: arXiv:2504.12819
-    
+
+  # ---- 論文 ---- 
   - type: journal
     year: 2026
     authors: [Y. Izunaga, K. Kurihara, H. Nagano, D. Uchida]
@@ -48,6 +50,7 @@ items:
     venue: オペレーションズ・リサーチ -経営の科学-
     detail: Vol. 71 (10), pp.533--539.
 
+  # ---- 国際会議発表 ---- 
   - type: international
     year: 2026
     authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
@@ -55,6 +58,7 @@ items:
     venue: The 24th Conference of The International Federation of Operational Research Societies (IFORS) 
     detail: Vienna
 
+  # ---- 国内会議発表 ---- 
   - type: domestic
     date: 2026-09-11
     authors: [川根大輝，長野北斗，伊豆永洋一]
@@ -91,6 +95,7 @@ items:
     venue: 日本オペレーションズ・リサーチ学会「評価のOR」研究部会 学生発表会2026 
     detail: 早稲田大学
 
+  # ---- 受賞 ---- 
   - type: award
     date: 2026-09-10
     authors: [栗原 昂汰]
