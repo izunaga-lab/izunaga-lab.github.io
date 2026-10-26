@@ -1,4 +1,4 @@
-<header class="page-header">
+<header class="page-header{{ if and .IsPage (eq .Section "news") }} is-post{{ end }}">
   {{ if and .Parent (not .Parent.IsHome) (not .IsSection) (ne .Section "about") }}
     <p class="breadcrumb"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></p>
   {{ end }}

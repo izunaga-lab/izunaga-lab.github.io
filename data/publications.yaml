@@ -24,14 +24,14 @@ items:
     authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
     title: A unifying view of distributionally robust optimization for probability smoothing via maximum entropy
     venue: arXix
-    detail: arXiv:2610.02568
+    detail: arXiv:2610.02568.
     
   - type: preprint
     year: 2025
     authors: [K. Kurihara, Y. Izunaga]
     title: A scalable mixed-integer conic optimization approach to cardinality-constrained Poisson regression with safe screening.
     venue: arXix
-    detail: arXiv:2504.12819
+    detail: arXiv:2504.12819.
 
   # ---- 論文 ---- 
   - type: journal
@@ -40,7 +40,7 @@ items:
     title: An axiomatic analysis of distributionally robust optimization with q-norm ambiguity sets for probability smoothing
     refereed: true
     venue: Operations Research Letters
-    detail: Vol. 67, 107457
+    detail: Vol. 67, 107457.
     doi: 10.1016/j.orl.2026.107457
 
   - type: journal
@@ -56,7 +56,7 @@ items:
     authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
     title: An Axiomatic Analysis of Distributionally Robust Optimization with q-Norm Ambiguity Sets for Probability Smoothing
     venue: The 24th Conference of The International Federation of Operational Research Societies (IFORS) 
-    detail: Vienna
+    detail: Vienna.
 
   # ---- 国内会議発表 ---- 
   - type: domestic
@@ -89,11 +89,48 @@ items:
     detail: 京都大学 数理解析研究所
 
   - type: domestic
+    date: 2026-09-01
+    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    title: Wasserstein 距離を用いた分布的ロバスト確率平滑化とエントロピー最大化との関係
+    venue: 連続最適化および関連分野に関する夏季学校2026
+    detail: 統計数理研究所
+
+  - type: domestic
     date: 2026-06-27
     authors: [川根大輝，長野北斗，伊豆永洋一]
     title: 逆最適化アプローチによる議席配分の公平性評価
     venue: 日本オペレーションズ・リサーチ学会「評価のOR」研究部会 学生発表会2026 
     detail: 早稲田大学
+  
+  - type: domestic
+    date: 2026-05-31
+    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    title: Wasserstein 距離を用いた分布的ロバスト確率平滑化とエントロピー最大化に基づく構造解析
+    venue: 最適化のモデリングとアルゴリズム（MATCHA）：未来を担う若手研究者の集い 2026
+    detail: 筑波大学
+
+  - type: domestic
+    date: 2026-03-11
+    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    title: ゼロ頻度問題に対する分布的ロバスト最適化モデルの公理論的分析
+    venue: 日本応用数理学会 第22回研究部会連合発表会
+    detail: 東京大学
+
+  - type: domestic
+    date: 2026-03-06
+    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    title: ゼロ頻度問題に対する分布的ロバスト最適化モデルの公理論的分析
+    venue: 日本オペレーションズ・リサーチ学会 2026年春季研究発表会
+    detail: 麗澤大学
+
+  - type: domestic
+    date: 2026-02-14
+    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    title: ゼロ頻度問題に対する分布的ロバスト最適化モデルの公理論的分析
+    venue: 日本オペレーションズ・リサーチ学会「評価のOR」第110回研究会
+    detail: 大阪大学 中之島センター
+
+
 
   # ---- 受賞 ---- 
   - type: award
