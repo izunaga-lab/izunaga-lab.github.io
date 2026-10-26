@@ -1,5 +1,32 @@
 {{ define "main" }}
 {{ $data := hugo.Data.publications }}
+
+{{- /*
+  各項目に「年」と「並べ替え用の数値」を付けます．
+  - date がある項目：date の新しい順．年も date から自動で決まります
+  - date がない項目：year で年ごとにまとめ，同じ年の中は書いた順
+*/ -}}
+{{ $rows := slice }}
+{{ range $i, $it := $data.items }}
+  {{ $year := 0 }}
+  {{ $ymd := 0 }}
+  {{ $dateLabel := "" }}
+  {{ with $it.date }}
+    {{ $t := time.AsTime . }}
+    {{ $year = $t.Year }}
+    {{ $ymd = $t.Format "20060102" | int }}
+    {{ $dateLabel = $t.Format "2006.01.02" }}
+  {{ else }}
+    {{ $year = $it.year | default 0 | int }}
+    {{ $ymd = mul $year 10000 }}
+  {{ end }}
+  {{ if not $year }}{{ warnf "研究成果：「%s」に date も year もありません" $it.title }}{{ end }}
+  {{ $sortKey := add (mul $ymd 100000) (sub 99999 $i) }}
+  {{ $rows = $rows | append (dict
+      "type" $it.type "year" $year "sortKey" $sortKey "dateLabel" $dateLabel
+      "refereed" (eq $it.refereed true) "item" $it) }}
+{{ end }}
+
 <div class="container narrow">
   {{ partial "page-header.html" . }}
   {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
@@ -7,36 +34,44 @@
   <nav class="pub-index" aria-label="成果の種類">
     <ul>
       {{ range $data.categories }}
-        {{ $n := len (where $data.items "type" .key) }}
+        {{ $n := len (where $rows "type" .key) }}
         {{ if $n }}<li><a href="#{{ .key }}"><span>{{ .label }}</span><span class="count">{{ $n }}件</span></a></li>{{ end }}
       {{ end }}
     </ul>
   </nav>
 
   {{ range $data.categories }}
-    {{ $items := where $data.items "type" .key }}
-    {{ if $items }}
+    {{ $catRows := sort (where $rows "type" .key) "sortKey" "desc" }}
+    {{ if $catRows }}
+      {{ $refereedCount := len (where $catRows "refereed" true) }}
       <section class="pub-section" id="{{ .key }}" aria-labelledby="{{ .key }}-title">
-        <h2 id="{{ .key }}-title" class="section-title">{{ .label }}</h2>
+        <h2 id="{{ .key }}-title" class="section-title">
+          {{ .label }}
+          <span class="count">{{ len $catRows }}件{{ if $refereedCount }}（うち査読あり{{ $refereedCount }}件）{{ end }}</span>
+        </h2>
         {{ $years := slice }}
-        {{ range $items }}{{ $years = $years | append .year }}{{ end }}
+        {{ range $catRows }}{{ $years = $years | append .year }}{{ end }}
         {{ range sort (uniq $years) "value" "desc" }}
           {{ $year := . }}
           <h3 class="pub-year">{{ $year }}年</h3>
           <ul class="pub-list">
-            {{ range where $items "year" $year }}
-              <li class="pub">
-                <span class="pub-title">{{ .title }}</span>
-                <span class="pub-authors">{{ delimit .authors ", " }}</span>
-                <span class="pub-venue">{{ .venue }}{{ with .detail }}, {{ . }}{{ end }}</span>
-                {{ if or .doi .url .note }}
-                  <span class="pub-extra">
-                    {{ with .note }}<span class="pub-note">{{ . }}</span>{{ end }}
-                    {{ with .doi }}<a href="https://doi.org/{{ . }}">DOI: {{ . }}</a>{{ end }}
-                    {{ with .url }}<a href="{{ . }}">リンク</a>{{ end }}
-                  </span>
-                {{ end }}
-              </li>
+            {{ range where $catRows "year" $year }}
+              {{ $r := . }}
+              {{ with .item }}
+                <li class="pub">
+                  {{ if $r.refereed }}<span class="pub-tag">査読あり</span>{{ end }}
+                  <span class="pub-title">{{ .title }}</span>
+                  <span class="pub-authors">{{ delimit .authors ", " }}</span>
+                  <span class="pub-venue">{{ .venue }}{{ with .detail }}, {{ . }}{{ end }}{{ with $r.dateLabel }}, <time>{{ . }}</time>{{ end }}</span>
+                  {{ if or .doi .url .note }}
+                    <span class="pub-extra">
+                      {{ with .note }}<span class="pub-note">{{ . }}</span>{{ end }}
+                      {{ with .doi }}<a href="https://doi.org/{{ . }}">DOI: {{ . }}</a>{{ end }}
+                      {{ with .url }}<a href="{{ . }}">リンク</a>{{ end }}
+                    </span>
+                  {{ end }}
+                </li>
+              {{ end }}
             {{ end }}
           </ul>
         {{ end }}

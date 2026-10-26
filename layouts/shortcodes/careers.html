@@ -1,16 +1,22 @@
-<div class="table-wrap">
-  <table class="careers-table">
-    <thead>
-      <tr><th scope="col">年度</th><th scope="col">修士課程修了</th><th scope="col">学部卒業</th></tr>
-    </thead>
-    <tbody>
-      {{ range hugo.Data.careers }}
-        <tr>
-          <th scope="row" class="nowrap">{{ .year }}</th>
-          <td>{{ with .master }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ else }}―{{ end }}</td>
-          <td>{{ with .bachelor }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ else }}―{{ end }}</td>
-        </tr>
+{{- /* 年度は表示せず，同じ進路を自動で集計して人数を表示します */ -}}
+{{ $c := hugo.Data.careers }}
+{{ with $c.period }}<p class="careers-period">対象：{{ . }}の卒業・修了者</p>{{ end }}
+<div class="careers">
+  {{ range slice (dict "key" "graduate" "label" "大学院修了") (dict "key" "bachelor" "label" "学部卒業") }}
+    {{ $list := index $c .key }}
+    <section class="careers-group" aria-labelledby="careers-{{ .key }}">
+      {{ if $list }}
+        {{ $r := partial "careers-list.html" $list }}
+        <h3 id="careers-{{ .key }}">{{ .label }}<span class="careers-total">計{{ $r.total }}名</span></h3>
+        <ul class="careers-list">
+          {{ range $r.rows }}
+            <li><span>{{ .name }}</span>{{ if gt .count 1 }}<span class="careers-count">{{ .count }}名</span>{{ end }}</li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <h3 id="careers-{{ .key }}">{{ .label }}</h3>
+        <p>―</p>
       {{ end }}
-    </tbody>
-  </table>
+    </section>
+  {{ end }}
 </div>

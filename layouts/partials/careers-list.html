@@ -1,0 +1,47 @@
+{{- /*
+  進路のリストを集計して並べ替えます．
+  - 文字列の項目は1件 = 1名として数えます
+  - { name: ..., count: ..., yomi: ... } の形でも書けます
+  - 同じ name は合算します（yomi は同じ name のどれか1行にあれば OK）
+  - 並び順：「進学」を含む進路を先に，その中とそれ以外をそれぞれ五十音順（yomi 順）
+*/ -}}
+{{- $items := slice -}}
+{{- range . -}}
+  {{- if reflect.IsMap . -}}
+    {{- $items = $items | append (dict "name" .name "n" (.count | default 1 | int) "yomi" (.yomi | default "")) -}}
+  {{- else -}}
+    {{- $items = $items | append (dict "name" . "n" 1 "yomi" "") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $names := slice -}}
+{{- range $items }}{{ $names = $names | append .name }}{{ end -}}
+
+{{- $first := slice -}}
+{{- $rest := slice -}}
+{{- $total := 0 -}}
+{{- range uniq $names -}}
+  {{- $name := . -}}
+  {{- $n := 0 -}}
+  {{- $yomi := "" -}}
+  {{- range where $items "name" $name -}}
+    {{- $n = add $n .n -}}
+    {{- with .yomi }}{{ $yomi = . }}{{ end -}}
+  {{- end -}}
+  {{- if not $yomi -}}
+    {{- if not (findRE `^[ぁ-んァ-ヶー・\s]+$` $name) -}}
+      {{- warnf "進路状況：「%s」に読み（yomi）がないため，五十音順に並ばない可能性があります" $name -}}
+    {{- end -}}
+    {{- $yomi = $name -}}
+  {{- end -}}
+  {{- $row := dict "name" $name "count" $n "yomi" $yomi -}}
+  {{- if strings.Contains $name "大学院" -}}
+    {{- $first = $first | append $row -}}
+  {{- else -}}
+    {{- $rest = $rest | append $row -}}
+  {{- end -}}
+  {{- $total = add $total $n -}}
+{{- end -}}
+
+{{- $rows := (sort $first "yomi") | append (sort $rest "yomi") -}}
+{{- return (dict "rows" $rows "total" $total) -}}
