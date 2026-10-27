@@ -19,5 +19,5 @@ bachelor:
   - { name: 九州大学 大学院マス・フォア・イノベーション連係学府 博士前期課程, count: 2, yomi: きゅうしゅう }
   - { name: 筑波大学 大学院社会工学学位プログラム, count: 1, yomi: つくば }
   - { name: 一橋大学 大学院ソーシャル・データサイエンス研究科, count: 1, yomi: ひとつばし }
-  - 株式会社 SmartHR
-  - NTT西日本株式会社
+  - { name: 株式会社 SmartHR, count: 1, yomi: すまーとえいちあーる }
+  - { name: 株式会社 NTT西日本株式会社, count: 1, yomi: えぬてぃーてぃーにしにほん }
