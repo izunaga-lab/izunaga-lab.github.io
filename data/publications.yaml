@@ -204,7 +204,7 @@ items:
     title: 第44回 学生論文賞
     venue: 日本オペレーションズ・リサーチ学会
     news: news/2026-09-11-award
-    news_label: 受賞のお知らせ
+    news_label: 詳細
     
   - type: award
     date: 2026-09-11
@@ -212,7 +212,7 @@ items:
     title: 学生優秀発表賞
     venue: 日本オペレーションズ・リサーチ学会 2026年秋季研究発表会
     news: news/2026-09-29-award
-    news_label: 受賞のお知らせ
+    news_label: 詳細
 
   - type: award
     date: 2026-10-24
@@ -220,7 +220,7 @@ items:
     title: 最優秀発表賞
     venue: 日本オペレーションズ・リサーチ学会九州支部 九州地区におけるOR若手研究交流会2026
     news: news/2026-10-25-award
-    news_label: 受賞のお知らせ
+    news_label: 詳細
 
   - type: award
     date: 2024-09-11
