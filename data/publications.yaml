@@ -227,10 +227,14 @@ items:
     authors: [栗原 昂汰]
     title: 学生優秀発表賞
     venue: 日本オペレーションズ・リサーチ学会 2024年秋季研究発表会
+    more: awards/2024-09-11-award
+    more_label: 詳細
 
   - type: award
     date: 2024-10-20
     authors: [栗原 昂汰]
     title: 優秀発表賞
     venue: 日本オペレーションズ・リサーチ学会九州支部 九州地区におけるOR若手研究交流会2024
+    more: awards/2024-10-20-award
+    more_label: 詳細
 

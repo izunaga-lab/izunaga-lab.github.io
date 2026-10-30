@@ -80,17 +80,19 @@
                     {{- end -}}
                   </span>
                   <span class="pub-venue">{{ .venue }}{{ with .detail }}, {{ . }}{{ end }}{{ with $r.dateLabel }}, <time>{{ . }}</time>{{ end }}</span>
-                  {{ if or .doi .url .note .news }}
+                  {{ if or .doi .url .note .news .more }}
                     <span class="pub-extra">
                       {{ with .note }}<span class="pub-note">{{ . }}</span>{{ end }}
                       {{ with .doi }}<a href="https://doi.org/{{ . }}">DOI: {{ . }}</a>{{ end }}
                       {{ with .url }}<a href="{{ . }}">リンク</a>{{ end }}
-                      {{ $label := .news_label | default "お知らせ記事" }}
-                      {{ with .news }}
+                      {{- /* more（詳細ページ）または news（お知らせ記事）へのリンク */ -}}
+                      {{ $page := .more | default .news }}
+                      {{ $label := cond (isset . "more") (.more_label | default "詳細") (.news_label | default "お知らせ記事") }}
+                      {{ with $page }}
                         {{ with site.GetPage . }}
                           <a href="{{ .RelPermalink }}">{{ $label }}</a>
                         {{ else }}
-                          {{ warnf "研究成果：news に指定した記事「%s」が見つかりません" . }}
+                          {{ warnf "研究成果：リンク先のページ「%s」が見つかりません" . }}
                         {{ end }}
                       {{ end }}
                     </span>

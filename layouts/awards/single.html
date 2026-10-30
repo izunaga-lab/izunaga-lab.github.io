@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="container narrow">
+  {{ partial "page-header.html" . }}
+  <p class="post-date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></p>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+  {{ with site.GetPage "/publications" }}
+    <p class="back-link"><a href="{{ .RelPermalink }}#award">研究成果（受賞）に戻る</a></p>
+  {{ end }}
+</div>
+{{ end }}

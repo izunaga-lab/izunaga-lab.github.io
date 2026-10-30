@@ -1,5 +1,7 @@
-<header class="page-header{{ if and .IsPage (eq .Section "news") }} is-post{{ end }}">
-  {{ if and .Parent (not .Parent.IsHome) (not .IsSection) (ne .Section "about") }}
+<header class="page-header{{ if and .IsPage (in (slice "news" "awards") .Section) }} is-post{{ end }}">
+  {{ if and .IsPage (eq .Section "awards") }}
+    {{ with site.GetPage "/publications" }}<p class="breadcrumb"><a href="{{ .RelPermalink }}#award">{{ .Title }}</a></p>{{ end }}
+  {{ else if and .Parent (not .Parent.IsHome) (not .IsSection) (ne .Section "about") }}
     <p class="breadcrumb"><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></p>
   {{ end }}
   <h1>{{ .Title }}</h1>
