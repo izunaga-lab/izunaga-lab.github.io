@@ -17,10 +17,13 @@ disableKinds = ["taxonomy", "term"]
 [params]
   labName = "伊豆永研究室"
   labNameEn = "Izunaga Laboratory"
-  affiliation = "九州大学 大学院経済学府 経済工学専攻"
+  university = "九州大学"
+  affiliation = [
+    " 大学院経済学府 経済工学専攻",
+    " 経済学部 経済工学科",
+  ]
   description = "九州大学 伊豆永研究室のウェブサイトです．"
   address = "〒819-0395 福岡県福岡市西区元岡744"
-  email = "--"
 
 # メインメニュー（weight の小さい順に並びます）
 [[menus.main]]

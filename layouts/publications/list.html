@@ -49,6 +49,9 @@
           {{ .label }}
           <span class="count">{{ len $catRows }}件{{ if $refereedCount }}（うち査読あり{{ $refereedCount }}件）{{ end }}</span>
         </h2>
+        {{ $hasPresenter := false }}
+        {{ range $catRows }}{{ if .item.presenter }}{{ $hasPresenter = true }}{{ end }}{{ end }}
+        {{ if $hasPresenter }}<p class="pub-legend">下線は発表者を表します．</p>{{ end }}
         {{ $years := slice }}
         {{ range $catRows }}{{ $years = $years | append .year }}{{ end }}
         {{ range sort (uniq $years) "value" "desc" }}
@@ -61,13 +64,35 @@
                 <li class="pub">
                   {{ if $r.refereed }}<span class="pub-tag">査読あり</span>{{ end }}
                   <span class="pub-title">{{ .title }}</span>
-                  <span class="pub-authors">{{ delimit .authors ", " }}</span>
+                  {{- /* presenter に書いた人の名前に下線を付けます */ -}}
+                  {{ $presenter := .presenter }}
+                  {{ if and $presenter (not (in .authors $presenter)) }}
+                    {{ warnf "研究成果：「%s」の presenter「%s」が authors にありません" .title $presenter }}
+                  {{ end }}
+                  <span class="pub-authors">
+                    {{- range $j, $a := .authors -}}
+                      {{- if $j }}, {{ end -}}
+                      {{- if and $presenter (eq $a $presenter) -}}
+                        <span class="pub-presenter">{{ $a }}<span class="visually-hidden">（発表者）</span></span>
+                      {{- else -}}
+                        {{ $a }}
+                      {{- end -}}
+                    {{- end -}}
+                  </span>
                   <span class="pub-venue">{{ .venue }}{{ with .detail }}, {{ . }}{{ end }}{{ with $r.dateLabel }}, <time>{{ . }}</time>{{ end }}</span>
-                  {{ if or .doi .url .note }}
+                  {{ if or .doi .url .note .news }}
                     <span class="pub-extra">
                       {{ with .note }}<span class="pub-note">{{ . }}</span>{{ end }}
                       {{ with .doi }}<a href="https://doi.org/{{ . }}">DOI: {{ . }}</a>{{ end }}
                       {{ with .url }}<a href="{{ . }}">リンク</a>{{ end }}
+                      {{ $label := .news_label | default "お知らせ記事" }}
+                      {{ with .news }}
+                        {{ with site.GetPage . }}
+                          <a href="{{ .RelPermalink }}">{{ $label }}</a>
+                        {{ else }}
+                          {{ warnf "研究成果：news に指定した記事「%s」が見つかりません" . }}
+                        {{ end }}
+                      {{ end }}
                     </span>
                   {{ end }}
                 </li>

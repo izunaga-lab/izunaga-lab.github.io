@@ -539,3 +539,29 @@ td ul { margin: 0; padding-left: 1.1rem; }
   font-size: clamp(1.4rem, 3.5vw, 1.75rem);
   line-height: 1.5;
 }
+
+/* ---------- 所属（複数併記） ---------- */
+.aff-univ { margin-right: 0.75em; }
+.aff-sep { margin-inline: 0.5em; }
+@media (max-width: 40rem) {
+  .aff-univ, .aff-item { display: block; }
+  .aff-sep { display: none; }
+}
+
+/* 発表者の下線 */
+.pub-presenter {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+.pub-legend { margin: -0.5rem 0 0.5rem; color: var(--muted); font-size: 0.85rem; }
+
+/* 画面には表示せず，読み上げソフトにだけ伝える文字 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

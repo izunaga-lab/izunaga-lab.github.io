@@ -54,6 +54,7 @@ items:
   - type: international
     year: 2026
     authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
+    presenter: K. Kurihara
     title: An Axiomatic Analysis of Distributionally Robust Optimization with q-Norm Ambiguity Sets for Probability Smoothing
     venue: The 24th Conference of The International Federation of Operational Research Societies (IFORS) 
     detail: Vienna.
@@ -61,7 +62,8 @@ items:
   # ---- 国内会議発表 ---- 
   - type: domestic
     date: 2026-09-11
-    authors: [川根大輝，長野北斗，伊豆永洋一]
+    authors: [川根大輝, 長野北斗, 伊豆永洋一]
+    presenter: 川根大輝
     title: 逆最適化アプローチによる議席配分の公平性評価
     venue: 日本オペレーションズ・リサーチ学会 2026年秋季研究発表会
     detail: 京都大学
@@ -69,81 +71,131 @@ items:
 
   - type: domestic
     date: 2026-10-24
-    authors: [川根大輝，長野北斗，伊豆永洋一]
+    authors: [川根大輝, 長野北斗, 伊豆永洋一]
+    presenter: 川根大輝
     title: 逆最適化アプローチによる議席配分の公平性評価
     venue: 日本オペレーションズ・リサーチ学会九州支部 九州地区におけるOR若手研究交流会2026
     note: 最優秀発表賞
 
   - type: domestic
     date: 2026-09-03
-    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    authors: [栗原昂汰, 山川雄也, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: Wasserstein 距離を用いた分布的ロバスト確率平滑化とエントロピー最大化との関係
     venue: 数理最適化：理論，計算，社会実装の新たな展開 RIMS共同研究（公開型） 
     detail: 京都大学 数理解析研究所
 
   - type: domestic
     date: 2026-09-04
-    authors: [川根大輝，長野北斗，伊豆永洋一]
+    authors: [川根大輝, 長野北斗, 伊豆永洋一]
+    presenter: 川根大輝
     title: 逆最適化アプローチによる議席配分の公平性評価
     venue: 数理最適化：理論，計算，社会実装の新たな展開 RIMS共同研究（公開型） 
     detail: 京都大学 数理解析研究所
 
   - type: domestic
     date: 2026-09-01
-    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    authors: [栗原昂汰, 山川雄也, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: Wasserstein 距離を用いた分布的ロバスト確率平滑化とエントロピー最大化との関係
     venue: 連続最適化および関連分野に関する夏季学校2026
     detail: 統計数理研究所
 
   - type: domestic
     date: 2026-06-27
-    authors: [川根大輝，長野北斗，伊豆永洋一]
+    authors: [川根大輝, 長野北斗, 伊豆永洋一]
+    presenter: 川根大輝
     title: 逆最適化アプローチによる議席配分の公平性評価
     venue: 日本オペレーションズ・リサーチ学会「評価のOR」研究部会 学生発表会2026 
     detail: 早稲田大学
   
   - type: domestic
     date: 2026-05-31
-    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    authors: [栗原昂汰, 山川雄也, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: Wasserstein 距離を用いた分布的ロバスト確率平滑化とエントロピー最大化に基づく構造解析
     venue: 最適化のモデリングとアルゴリズム（MATCHA）：未来を担う若手研究者の集い 2026
     detail: 筑波大学
 
   - type: domestic
     date: 2026-03-11
-    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    authors: [栗原昂汰, 山川雄也, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: ゼロ頻度問題に対する分布的ロバスト最適化モデルの公理論的分析
     venue: 日本応用数理学会 第22回研究部会連合発表会
     detail: 東京大学
 
   - type: domestic
     date: 2026-03-06
-    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    authors: [栗原昂汰, 山川雄也, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: ゼロ頻度問題に対する分布的ロバスト最適化モデルの公理論的分析
     venue: 日本オペレーションズ・リサーチ学会 2026年春季研究発表会
     detail: 麗澤大学
 
   - type: domestic
     date: 2026-02-14
-    authors: [栗原昂汰，山川雄也，伊豆永洋一]
+    authors: [栗原昂汰, 山川雄也, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: ゼロ頻度問題に対する分布的ロバスト最適化モデルの公理論的分析
     venue: 日本オペレーションズ・リサーチ学会「評価のOR」第110回研究会
     detail: 大阪大学 中之島センター
 
   - type: domestic
+    date: 2025-10-25
+    authors: [長野北斗, 内田大貴, 栗原昂汰, 伊豆永洋一]
+    presenter: 長野北斗
+    title: ゼロ頻度問題に対するロバスト最適化法の公理論的分析
+    venue: 日本オペレーションズ・リサーチ学会九州支部 九州地区におけるOR若手研究交流会2025
+
+  - type: domestic
+    date: 2025-09-02
+    authors: [長野北斗, 内田大貴, 栗原昂汰, 伊豆永洋一]
+    presenter: 長野北斗
+    title: ゼロ頻度問題に対するロバスト最適化法の公理論的分析
+    venue: 「数理最適化の最前線」RIMS共同研究（公開型） 
+    detail: 京都大学 数理解析研究所
+  
+  - type: domestic
+    date: 2025-08-28
+    authors: [栗原昂汰, 長野北斗, 内田大貴, 伊豆永洋一]
+    presenter: 栗原昂汰
+    title: ゼロ頻度問題に対するロバスト最適化法の公理的性質
+    venue: 連続最適化および関連分野に関する夏季学校 2025 
+    detail: 統計数理研究所
+
+  - type: domestic
+    date: 2025-06-28
+    authors: [長野北斗, 内田大貴, 栗原昂汰, 伊豆永洋一]
+    presenter: 長野北斗
+    title: ゼロ頻度問題に対する分布的ロバスト最適化アプローチ
+    venue: 日本オペレーションズ・リサーチ学会「評価のOR」学生発表会2025
+    detail: 早稲田大学
+
+  - type: domestic
     date: 2024-10-20
-    authors: [栗原昂汰，伊豆永洋一]
+    authors: [栗原昂汰, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: ポアソン回帰のスパース推定に対する問題規模縮小法
     venue: 日本オペレーションズ・リサーチ学会九州支部 九州地区におけるOR若手研究交流会2024
     note: 優秀発表賞
 
   - type: domestic
     date: 2024-09-11
-    authors: [栗原昂汰，伊豆永洋一]
+    authors: [栗原昂汰, 伊豆永洋一]
+    presenter: 栗原昂汰
     title: ポアソン回帰のスパース推定に対する問題規模縮小法
     venue: 日本オペレーションズ・リサーチ学会 2024年秋季研究発表会
     detail: 南山大学
     note: 学生優秀発表賞
+
+  - type: domestic
+    date: 2024-08-27
+    authors: [栗原昂汰, 伊豆永洋一]
+    presenter: 栗原昂汰
+    title: ポアソン回帰のスパース推定に対する問題規模縮小法
+    venue: 「数理最適化の進展とその周辺」RIMS共同研究（公開型）
+    detail: 京都大学 数理解析研究所
 
   # ---- 受賞 ---- 
   - type: award
@@ -155,7 +207,7 @@ items:
   - type: award
     date: 2026-09-11
     authors: [川根 大輝]
-    title: 優秀学生発表賞
+    title: 学生優秀発表賞
     venue: 日本オペレーションズ・リサーチ学会 2026年秋季研究発表会
 
   - type: award
@@ -167,7 +219,7 @@ items:
   - type: award
     date: 2024-09-11
     authors: [栗原 昂汰]
-    title: 優秀学生発表賞
+    title: 学生優秀発表賞
     venue: 日本オペレーションズ・リサーチ学会 2024年秋季研究発表会
 
   - type: award

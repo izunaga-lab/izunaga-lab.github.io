@@ -1,0 +1,10 @@
+{{- /* 所属の表示．affiliation は1つ（文字列）でも複数（リスト）でも書けます */ -}}
+{{- $list := site.Params.affiliation -}}
+{{- if not (reflect.IsSlice $list) }}{{ $list = slice $list }}{{ end -}}
+<span class="aff">
+  {{- with site.Params.university }}<span class="aff-univ">{{ . }}</span>{{ end -}}
+  {{- range $i, $a := $list -}}
+    {{- if $i }}<span class="aff-sep" aria-hidden="true">/</span>{{ end -}}
+    <span class="aff-item">{{ $a }}</span>
+  {{- end -}}
+</span>

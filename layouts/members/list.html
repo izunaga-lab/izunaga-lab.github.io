@@ -27,10 +27,10 @@
       <h2 id="students-{{ $i }}" class="section-title">{{ $g.group }}<span class="count">{{ len $g.members }}名</span></h2>
       <div class="table-wrap">
         <table class="member-table">
-          <thead><tr><th scope="col">学年</th><th scope="col">氏名</th><th scope="col">研究テーマ</th></tr></thead>
+          <thead><tr><th scope="col">学年</th><th scope="col">氏名</th><th scope="col">所属</th></tr></thead>
           <tbody>
             {{ range $g.members }}
-              <tr><td>{{ .grade }}</td><td class="nowrap">{{ .name }}</td><td>{{ .theme }}</td></tr>
+              <tr><td>{{ .grade }}</td><td class="nowrap">{{ .name }}</td><td>{{ .affiliation }}</td></tr>
             {{ end }}
           </tbody>
         </table>

@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="hero">
   <div class="container">
-    <p class="hero-affiliation">{{ site.Params.affiliation }}</p>
+    <p class="hero-affiliation">{{ partial "affiliation.html" . }}</p>
     <h1 class="hero-title">{{ site.Params.labName }}</h1>
     <p class="hero-title-en" lang="en">{{ site.Params.labNameEn }}</p>
     <div class="hero-lead">{{ .Content }}</div>

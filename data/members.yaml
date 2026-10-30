@@ -16,22 +16,22 @@ faculty:
 students:
   - group: 博士後期課程
     members:
-      - { grade: D1, name: 栗原 昂汰, theme: tba }
+      - { grade: D1, name: 栗原 昂汰, affiliation: マス・フォア・イノベーション連係学府 }
   - group: 修士課程
     members:
-      - { grade: M2, name: 内田 大貴, theme: tba }
-      - { grade: M2, name: 長野 北斗, theme: tba }
-      - { grade: M1, name: 川根 大輝, theme: tba }
-      - { grade: M1, name: 牧 汰樹, theme: tba }
+      - { grade: M2, name: 内田 大貴, affiliation: 経済学府  }
+      - { grade: M2, name: 長野 北斗, affiliation: 経済学府 }
+      - { grade: M1, name: 川根 大輝, theme: tba, affiliation: マス・フォア・イノベーション連係学府 }
+      - { grade: M1, name: 牧 汰樹, affiliation: 経済学府 }
   - group: 学部
     members:
-      - { grade: B4, name: 小野 仁子, theme: tba }
-      - { grade: B4, name: 朱 彦儒, theme: tba }
-      - { grade: B4, name: 豊田 陽之, theme: tba }
-      - { grade: B3, name: 田中 陽, theme: tba }
-      - { grade: B3, name: 手嶋 和輝, theme: tba }
-      - { grade: B3, name: 平川 直幹, theme: tba }
-      - { grade: B3, name: 八十 圭佑, theme: tba }
+      - { grade: B4, name: 小野 仁子, affiliation: 経済学部 }
+      - { grade: B4, name: 朱 彦儒, affiliation: 経済学部 }
+      - { grade: B4, name: 豊田 陽之, affiliation: 経済学部 }
+      - { grade: B3, name: 田中 陽, affiliation: 経済学部 }
+      - { grade: B3, name: 手嶋 和輝, affiliation: 経済学部 }
+      - { grade: B3, name: 平川 直幹, affiliation: 経済学部 }
+      - { grade: B3, name: 八十 圭佑, affiliation: 経済学部 }
 
 # 卒業生・修了生（年度ごと）
 alumni:
