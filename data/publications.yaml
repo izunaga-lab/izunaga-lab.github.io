@@ -21,6 +21,13 @@ items:
   # ---- プレプリント ----
   - type: preprint
     year: 2026
+    authors: [D. Kawane, H. Nagano, Y. Izunaga]
+    title: Inverse optimization for divisor methods of apportionment
+    venue: arXiv
+    detail: arXiv:2611.02720.
+
+  - type: preprint
+    year: 2026
     authors: [K. Kurihara, Y. Yamakawa, Y. Izunaga]
     title: A unifying view of distributionally robust optimization for probability smoothing via maximum entropy
     venue: arXiv
