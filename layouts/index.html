@@ -1,22 +1,83 @@
 {{ define "main" }}
-<section class="hero">
-  <div class="container">
+{{ $slides := partial "hero-slides.html" . }}
+<section class="hero{{ if $slides }} hero--photo{{ end }}">
+  {{ with $slides }}
+    {{- /* 背景の写真（装飾なので読み上げソフトには伝えません） */ -}}
+    <div class="hero-slides" aria-hidden="true">
+      {{ range $i, $s := . }}
+        <picture class="hero-slide{{ if eq $i 0 }} is-active{{ end }}">
+          <source media="(max-width: 40rem)" srcset="{{ $s.small.RelPermalink }}" width="{{ $s.small.Width }}" height="{{ $s.small.Height }}">
+          <img src="{{ $s.large.RelPermalink }}" width="{{ $s.large.Width }}" height="{{ $s.large.Height }}" alt="" decoding="async">
+        </picture>
+      {{ end }}
+    </div>
+  {{ end }}
+  <div class="container hero-content">
     <p class="hero-affiliation">{{ partial "affiliation.html" . }}</p>
     <h1 class="hero-title">{{ site.Params.labName }}</h1>
     <p class="hero-title-en" lang="en">{{ site.Params.labNameEn }}</p>
     <div class="hero-lead">{{ .Content }}</div>
   </div>
+  {{ if gt (len $slides) 1 }}
+    <button class="hero-pause" type="button" aria-label="背景のスライドショーを一時停止">一時停止</button>
+  {{ end }}
 </section>
+
+{{ if gt (len $slides) 1 }}
+<script>
+  // 背景の写真を6秒ごとに切り替えます．
+  // 「視差効果を減らす」設定の環境では自動で切り替えず，ボタンで再生できます．
+  (() => {
+    const slides = document.querySelectorAll(".hero-slide");
+    const button = document.querySelector(".hero-pause");
+    const interval = 6000;
+    let current = 0;
+    let timer = null;
+
+    const next = () => {
+      slides[current].classList.remove("is-active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("is-active");
+    };
+    const play = () => {
+      timer = setInterval(next, interval);
+      button.textContent = "一時停止";
+      button.setAttribute("aria-label", "背景のスライドショーを一時停止");
+    };
+    const stop = () => {
+      clearInterval(timer);
+      timer = null;
+      button.textContent = "再生";
+      button.setAttribute("aria-label", "背景のスライドショーを再生");
+    };
+
+    button.addEventListener("click", () => (timer ? stop() : play()));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      stop();
+    } else {
+      play();
+    }
+  })();
+</script>
+{{ end }}
 
 <div class="container home-grid">
   <section aria-labelledby="home-news">
     <h2 id="home-news" class="section-title">お知らせ</h2>
+    {{- /* 表示する期間（月数）と最大件数はここで変更できます */ -}}
+    {{ $months := 3 }}
+    {{ $maxItems := 10 }}
+    {{ $since := now.AddDate 0 (mul -1 $months) 0 }}
+    {{ $news := (where site.RegularPages "Section" "news").ByDate.Reverse }}
+    {{ $recent := where $news "Date" "ge" $since }}
     <ul class="news-list">
-      {{ range first 5 (where site.RegularPages "Section" "news").ByDate.Reverse }}
+      {{ range first $maxItems $recent }}
         <li>
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
+      {{ else }}
+        <li class="news-empty">過去{{ $months }}か月のお知らせはありません．</li>
       {{ end }}
     </ul>
     <p class="more-link"><a href="{{ (site.GetPage "/news").RelPermalink }}">お知らせをすべて見る</a></p>

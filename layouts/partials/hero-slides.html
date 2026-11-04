@@ -1,0 +1,21 @@
+{{- /*
+  トップページの背景に表示する写真を集めます．
+  記事（お知らせ・受賞の詳細など）の先頭に hero: 画像ファイル名 を書くと対象になります．
+  新しい記事から順に，最大 heroMax 枚（hugo.toml，既定は6枚）を使います．
+  写真は自動で切り抜き・縮小・WebP 変換されます．
+*/ -}}
+{{- $max := site.Params.heroMax | default 6 -}}
+{{- $pages := where site.RegularPages "Params.hero" "!=" nil -}}
+{{- $slides := slice -}}
+{{- range first $max $pages.ByDate.Reverse -}}
+  {{- $p := . -}}
+  {{- with .Resources.Get .Params.hero -}}
+    {{- $slides = $slides | append (dict
+        "large" (.Fill "1920x1000 Smart webp q72")
+        "small" (.Fill "900x1100 Smart webp q70")
+        "page" $p) -}}
+  {{- else -}}
+    {{- warnf "トップの背景写真：「%s」の hero に指定した画像「%s」が見つかりません（記事はフォルダ形式にし，画像を同じフォルダに置いてください）" $p.Title $p.Params.hero -}}
+  {{- end -}}
+{{- end -}}
+{{- return $slides -}}
