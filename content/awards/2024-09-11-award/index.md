@@ -6,3 +6,5 @@ date: 2024-09-11
 修士1年の栗原が，日本オペレーションズ・リサーチ学会2024年秋季研究発表会において口頭発表「ポアソン回帰のスパース推定に対する問題規模縮小法」を行い，学生優秀発表賞を受賞しました．
 
 詳細は[こちら](https://orsj.org/nc2024f/conference/student_award/)をご覧ください．
+
+{{< figure src="certificate_or2024_kurihara.jpg" alt="賞状" width="480" >}}
