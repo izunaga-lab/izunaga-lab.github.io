@@ -17,7 +17,7 @@ graduate:
 bachelor:
   - { name: 九州大学 大学院経済学府 修士課程 進学, count: 3, yomi: きゅうしゅう }
   - { name: 九州大学 大学院マス・フォア・イノベーション連係学府 博士前期課程 進学, count: 2, yomi: きゅうしゅう }
-  - { name: 筑波大学 大学院社会工学学位プログラム 進学, count: 1, yomi: つくば }
+  - { name: 筑波大学 理工情報生命学術院 システム情報工学研究群 進学, count: 1, yomi: つくば }
   - { name: 一橋大学 大学院ソーシャル・データサイエンス研究科 進学, count: 1, yomi: ひとつばし }
   - { name: 株式会社 SmartHR, count: 1, yomi: すまーとえいちあーる }
   - { name: 株式会社 NTT西日本株式会社, count: 1, yomi: えぬてぃーてぃーにしにほん }
