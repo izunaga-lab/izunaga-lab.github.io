@@ -7,3 +7,5 @@ draft: false
 修士1年の川根が，日本オペレーションズ・リサーチ学会九州支部 九州地区におけるOR若手研究交流会 において口頭発表「逆最適化アプローチによる議席配分の公平性評価」を行い，最優秀発表賞を受賞しました．
 
 詳細は[こちら](https://sites.google.com/view/or-qwakate2026/)をご覧ください．
+
+{{< figure src="certificate_qor2026_kawane.jpg" alt="賞状" width="480" >}}
